@@ -10,8 +10,8 @@ TMPOUT='_wsprd.out'
 pax11publish -d
 pax11publish -r
 ##
+pactl unload-module module-loopback
 aplay -l
-
 echo "enabling loopback"
 pactl load-module module-loopback source=alsa_input.usb-Plugable_Plugable_USB_Audio_Device_000000000000-00.analog-stereo
 
