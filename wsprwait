@@ -23,7 +23,7 @@ decode () {
 	date
 	date >> /home/debian/final/wsproutput.log
 	/home/debian/final/wsprcan/./k9an-wsprd  >> /home/debian/final/wsproutput.log
-	#sleep 110
+	sleep 110
 }
 
 while true
