@@ -34,7 +34,7 @@ do
 	if (("10#$min" % 2 == 0 && "10#$sec" == 0 )); then
 		echo -n "Executing wspr_decode "
 		decode
-	elif ((10#$sec < 40)); then
-		sleep 1
+	#elif ((10#$sec < 40)); then
+	#	sleep 1
 	fi
 done
