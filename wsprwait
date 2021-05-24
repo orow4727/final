@@ -5,13 +5,11 @@ set AUDIODEV=hw:1
 
 DECODER=wsprcan/k9an-wsprd
 TMPOUT='_wsprd.out'
-export XDG_RUNTIME_DIR="/run/user/1000"
+#export XDG_RUNTIME_DIR="/run/user/1000"
 #fix simple() permission denied
 pax11publish -d
 pax11publish -r
 ##
-
-sleep 5
 aplay -l
 
 echo "enabling loopback"

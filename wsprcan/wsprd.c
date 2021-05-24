@@ -1357,7 +1357,7 @@ int main(int argc, char *argv[])
                 success = true;
                 }
     if (success == true){
-      printf("blink LED\n")
+      printf("blink LED\n");
       led();
     }
 
