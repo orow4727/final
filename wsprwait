@@ -21,7 +21,7 @@ echo "configuring i2c"
 /home/debian/final/i2c/./si5351
 
 decode () {
-	paplay /home/debian/final/data/iq-16b.wav&
+	#paplay /home/debian/final/data/iq-16b.wav&
 	date
 	date >> /home/debian/final/wsproutput.log
 	/home/debian/final/wsprcan/./k9an-wsprd  >> /home/debian/final/wsproutput.log
