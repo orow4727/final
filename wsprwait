@@ -5,7 +5,7 @@ set AUDIODEV=hw:1
 
 DECODER=wsprcan/k9an-wsprd
 TMPOUT='_wsprd.out'
-export XDG_RUNTIME_DIR="/run/user/"
+export XDG_RUNTIME_DIR="/run/user/$(id -u)"
 #fix simple() permission denied
 pax11publish -d
 pax11publish -r
