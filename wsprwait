@@ -20,7 +20,7 @@ echo "configuring i2c"
 
 decode () {
 	#paplay /home/debian/final/data/iq-16b.wav&
-	date
+	#date
 	#date >> /home/debian/final/wsproutput.log
 	/home/debian/final/wsprcan/./k9an-wsprd
 	#sleep 110
