@@ -30,7 +30,7 @@ while true
 do
 	sec=$(date +'%S')
 	min=$(date +'%M')
-	date
+	#date
 	if (("10#$min" % 2 == 0 && "10#$sec" == 0 )); then
 		echo -n "Executing wspr_decode "
 		decode
