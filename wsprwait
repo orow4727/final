@@ -35,14 +35,19 @@ decode () {
 	if ((j == 0)); then
 		echo 0 > /sys/class/gpio/gpio46/value
 		echo 1 > /sys/class/gpio/gpio47/value
-		echo "RF enabled" >> /home/debian/final/wsproutput.log
-		date >> /home/debian/final/wsproutput.log
+		echo "RF enabled"
+		date
+		date >> /home/debian/final/RFoutput.log
+		/home/debian/final/wsprcan/./k9an-wsprd >> /home/debian/final/RFoutput.log
 		
 	elif ((j == 1)); then
 		echo 1 > /sys/class/gpio/gpio46/value
 		echo 0 > /sys/class/gpio/gpio47/value
-		echo "Bandpass enabled" >> /home/debian/final/wsproutput.log
-		date >> /home/debian/final/wsproutput.log
+		echo "Bandpass enabled"
+		date
+		date >> /home/debian/final/BPoutput.log
+		/home/debian/final/wsprcan/./k9an-wsprd >> /home/debian/final/BPoutput.log
+		
 	fi
 
 	date
