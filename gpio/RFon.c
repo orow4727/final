@@ -12,7 +12,8 @@ int
 main(int argc, char *argv[])
 {
         struct gpiod_chip *output_chip;
-        struct gpiod_line *output_line;
+        struct gpiod_line *output_line46;
+        struct gpiod_line *output_line47;
         int line_value;
 
         /* open chip and get line */
