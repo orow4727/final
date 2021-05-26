@@ -22,7 +22,9 @@ main(int argc, char *argv[])
         output_line47 = gpiod_chip_get_line(output_chip, 47);
 
         /* config as output and set a description */
-        gpiod_line_request_output(output_line, "BPon",
+        gpiod_line_request_output(output_line46, "RFon",
+                GPIOD_LINE_ACTIVE_STATE_HIGH);
+        gpiod_line_request_output(output_line47, "BPoff",
                 GPIOD_LINE_ACTIVE_STATE_HIGH);
 
         
