@@ -27,14 +27,14 @@ decode () {
 		gpioset --mode=wait gpiochip0 46=1&
 		gpioset --mode=wait gpiochip0 47=0&
 		i = 1
-		echo "Bandpass enabled" >>wsproutput.log
+		echo "Bandpass enabled" >> /home/debian/final/wsproutput.log
 		date >> /home/debian/final/wsproutput.log
 		
 	elif ((j == 1)); then
 		gpioset --mode=wait gpiochip0 46=0&
 		gpioset --mode=wait gpiochip0 47=1&
 		i = 0
-		echo "RF enabled" >>wsproutput.log
+		echo "RF enabled" >> /home/debian/final/wsproutput.log
 		date >> /home/debian/final/wsproutput.log
 	fi
 
@@ -45,7 +45,7 @@ decode () {
 		i=0
 		if ((j == 0)); then
 			j=1
-		elif ((j == 1)): then
+		elif ((j == 1)); then
 			j=0
 		fi
 	fi
