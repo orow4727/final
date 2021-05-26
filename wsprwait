@@ -10,7 +10,7 @@ TMPOUT='_wsprd.out'
 pax11publish -d
 pax11publish -r
 ##
-#pactl unload-module module-loopback
+pactl unload-module module-loopback
 aplay -l
 echo "enabling loopback"
 pactl load-module module-loopback source=alsa_input.usb-Plugable_Plugable_USB_Audio_Device_000000000000-00.analog-stereo
@@ -20,29 +20,19 @@ echo "configuring i2c"
 i=0
 j=0
 
-sudo echo 46 > /sys/class/gpio/export
-sudo echo out > /sys/class/gpio/gpio46/direction 
-sudo echo 0 > /sys/class/gpio/gpio46/value               
-
-sudo echo 47 > /sys/class/gpio/export
-sudo echo out > /sys/class/gpio/gpio47/direction 
-sudo echo 1 > /sys/class/gpio/gpio47/value  
-
 decode () {
 	#paplay /home/debian/final/data/iq-16b.wav&
 	i +=1
 
 	if ((j == 0)); then
-		sudo echo 1 > /sys/class/gpio/gpio46/value
-		sudo echo 0 > /sys/class/gpio/gpio47/value
+		/home/debian/final/gpio/./RFon
 		echo "RF enabled"
 		date
 		date >> /home/debian/final/RFoutput.log
 		/home/debian/final/wsprcan/./k9an-wsprd >> /home/debian/final/RFoutput.log
 		
 	elif ((j == 1)); then
-		sudo echo 0 > /sys/class/gpio/gpio46/value
-		sudo echo 1 > /sys/class/gpio/gpio47/value
+		/home/debian/final/gpio/./BPon
 		echo "Bandpass enabled"
 		date
 		date >> /home/debian/final/BPoutput.log
