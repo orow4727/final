@@ -2,9 +2,8 @@
 #include <unistd.h>
 #include <gpiod.h>
  
-int 
-main(void)
-{
+int main(){
+        
         struct gpiod_chip *output_chip;
         struct gpiod_line *output_line46;
         struct gpiod_line *output_line47;
