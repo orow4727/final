@@ -4,9 +4,6 @@ all:	$(TARGETS)
 RFon:	RFon.o
 	gcc -o RFon RFon.c -lgpiod
 
-BPon:	BPon.o
-	gcc -o BPon BPon.c -lgpiod
-
 PHWL-GPIO-00A0.dtbo:	PHWL-GPIO.dts
 	dtc -O dtb -o PHWL-GPIO-00A0.dtbo -b 0 -@ PHWL-GPIO.dts
 
