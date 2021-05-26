@@ -1,11 +1,8 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <gpiod.h>
-
-#define GPIOCHIP        0
-
  
-void main(void)
+int main(void)
 {
         struct gpiod_chip *output_chip;
         struct gpiod_line *output_line46;
