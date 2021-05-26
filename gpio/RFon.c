@@ -4,7 +4,7 @@
 
 #define GPIOCHIP        0
 
-int 
+ 
 main(int argc, char *argv[])
 {
         struct gpiod_chip *output_chip;
