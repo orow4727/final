@@ -3,7 +3,7 @@
 #include <gpiod.h>
  
 int main(){
-        
+
         struct gpiod_chip *output_chip;
         struct gpiod_line *output_line46;
         struct gpiod_line *output_line47;
@@ -25,7 +25,5 @@ int main(){
         gpiod_line_set_value(output_line46, 0);
         gpiod_line_set_value(output_line47, 1);
 
-
-        return;
 }
 
