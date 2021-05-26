@@ -1356,10 +1356,10 @@ int main(int argc, char *argv[])
                 decodes[i].jitter);
                 success = true;
                 }
-    if (success == true){
-      printf("blink LED\n");
+    //if (success == true){
+      //printf("blink LED\n");
       //led();
-    }
+    //}
 
 
 
