@@ -17,13 +17,38 @@ pactl load-module module-loopback source=alsa_input.usb-Plugable_Plugable_USB_Au
 
 echo "configuring i2c"
 /home/debian/final/i2c/./si5351
-
+i=0
+j=0
 decode () {
 	#paplay /home/debian/final/data/iq-16b.wav&
+	i +=1
+
+	if ((j == 0)); then
+		gpioset --mode=wait gpiochip0 46=1&
+		gpioset --mode=wait gpiochip0 47=0&
+		i = 1
+		echo "Bandpass enabled" >>wsproutput.log
+		date >> /home/debian/final/wsproutput.log
+		
+	elif ((j == 1)); then
+		gpioset --mode=wait gpiochip0 46=0&
+		gpioset --mode=wait gpiochip0 47=1&
+		i = 0
+		echo "RF enabled" >>wsproutput.log
+		date >> /home/debian/final/wsproutput.log
+	fi
+
 	date
-	date >> /home/debian/final/wsproutput.log
 	/home/debian/final/wsprcan/./k9an-wsprd >> /home/debian/final/wsproutput.log
-	#sleep 110
+
+	if ((i == 5)); then
+		i=0
+		if ((j == 0)); then
+			j=1
+		elif ((j == 1)): then
+			j=0
+		fi
+	fi
 }
 
 while true
