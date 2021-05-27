@@ -1,5 +1,5 @@
 /*
- * **    blink.c -    blink with 1s delay 
+ * **    blink.c -    blink with 1s delay
  * */
 
 #include <stdio.h>
@@ -7,9 +7,9 @@
 #include <gpiod.h>
 
 #define GPIOCHIP        1
-#define GPIOLINE        24
+#define GPIOLINE        46
 
-int 
+int
 main(int argc, char *argv[])
 {
         struct gpiod_chip *output_chip;
@@ -33,4 +33,3 @@ main(int argc, char *argv[])
 
         return 0;
 }
-
