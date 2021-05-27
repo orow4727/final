@@ -7,6 +7,9 @@ ssd:	ssd.o
 blink:	blink.o
 	gcc -o blink blink.c -lgpiod
 
+rfon:	rfon.o
+	gcc -o rfon rfon.c -lgpiod
+
 PHWL-GPIO-00A0.dtbo:	PHWL-GPIO.dts
 	dtc -O dtb -o PHWL-GPIO-00A0.dtbo -b 0 -@ PHWL-GPIO.dts
 
