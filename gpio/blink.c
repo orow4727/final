@@ -6,10 +6,10 @@
 #include <unistd.h>
 #include <gpiod.h>
 
-#define GPIOCHIP        1
-#define GPIOLINE        24
+#define GPIOCHIP        3
+#define GPIOLINE        19
 
-int 
+int
 main(int argc, char *argv[])
 {
         struct gpiod_chip *output_chip;
