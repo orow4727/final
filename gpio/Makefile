@@ -1,4 +1,4 @@
-TARGETS=	ssd blink PHWL-GPIO-00A0.dtbo
+TARGETS=	ssd blink rfon PHWL-GPIO-00A0.dtbo
 all:	$(TARGETS)
 
 ssd:	ssd.o
@@ -18,4 +18,4 @@ install:	PHWL-GPIO-00A0.dtbo
 	sudo cp uEnv.txt /boot
 
 clean:	
-	-rm -f *.o *.dtbo ssd blink
+	-rm -f *.o *.dtbo ssd blink rfon
