@@ -1,4 +1,4 @@
-TARGETS=	ssd blink rfon PHWL-GPIO-00A0.dtbo
+TARGETS=	ssd blink PHWL-GPIO-00A0.dtbo
 all:	$(TARGETS)
 
 ssd:	ssd.o
@@ -6,9 +6,6 @@ ssd:	ssd.o
 
 blink:	blink.o
 	gcc -o blink blink.c -lgpiod
-
-rfon:	rfon.o
-	gcc -o rfon rfon.c -lgpiod
 
 PHWL-GPIO-00A0.dtbo:	PHWL-GPIO.dts
 	dtc -O dtb -o PHWL-GPIO-00A0.dtbo -b 0 -@ PHWL-GPIO.dts
@@ -18,4 +15,4 @@ install:	PHWL-GPIO-00A0.dtbo
 	sudo cp uEnv.txt /boot
 
 clean:	
-	-rm -f *.o *.dtbo ssd blink rfon
+	-rm -f *.o *.dtbo ssd blink

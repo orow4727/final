@@ -13,24 +13,25 @@ int
 main(int argc, char *argv[])
 {
         struct gpiod_chip *output_chip;
-        struct gpiod_line *output_line;
+        struct gpiod_line *output_line1;
+        struct gpiod_line *output_line2;
         int line_value;
 
         /* open chip and get line */
         output_chip = gpiod_chip_open_by_number(GPIOCHIP);
-        output_line = gpiod_chip_get_line(output_chip, GPIOLINE);
+        output_line1 = gpiod_chip_get_line(output_chip, 46);
+        output_line2 = gpiod_chip_get_line(output_chip, 47);
 
         /* config as output and set a description */
-        gpiod_line_request_output(output_line, "blink",
+        gpiod_line_request_output(output_line1, "blink",
+                GPIOD_LINE_ACTIVE_STATE_HIGH);
+        gpiod_line_request_output(output_line2, "blink",
                 GPIOD_LINE_ACTIVE_STATE_HIGH);
 
-        for (;;)
-        {
-                line_value = !line_value;
-                gpiod_line_set_value(output_line, line_value);
-                sleep(1);
-        }
+        
+        gpiod_line_set_value(output_line1, 1);
+        gpiod_line_set_value(output_line2, 0);
+        
 
         return 0;
 }
-
