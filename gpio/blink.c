@@ -7,9 +7,9 @@
 #include <gpiod.h>
 
 #define GPIOCHIP        1
-#define GPIOLINE        46
+#define GPIOLINE        24
 
-int
+int 
 main(int argc, char *argv[])
 {
         struct gpiod_chip *output_chip;
