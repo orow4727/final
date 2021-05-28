@@ -22,26 +22,25 @@ j=0
 
 decode () {
 	#paplay /home/debian/final/data/iq-16b.wav&
-	i +=1
+	i=i+1
 
 	if ((j == 0)); then
-		/home/debian/final/gpio/./RFon
-		echo "RF enabled"
+		echo "BP enabled"
 		date
 		date >> /home/debian/final/RFoutput.log
 		/home/debian/final/wsprcan/./k9an-wsprd >> /home/debian/final/RFoutput.log
 		
 	elif ((j == 1)); then
 		/home/debian/final/gpio/./BPon
-		echo "Bandpass enabled"
+		echo "RF enabled"
 		date
 		date >> /home/debian/final/BPoutput.log
-		/home/debian/final/wsprcan/./k9an-wsprd >> /home/debian/final/BPoutput.log
+		/home/debian/final2/wsprcan/./k9an-wsprd >> /home/debian/final/BPoutput.log
 		
 	fi
 
-	date
-	/home/debian/final/wsprcan/./k9an-wsprd >> /home/debian/final/wsproutput.log
+	#date
+	#/home/debian/final/wsprcan/./k9an-wsprd >> /home/debian/final/wsproutput.log
 
 	if ((i == 5)); then
 		i=0

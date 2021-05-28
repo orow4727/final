@@ -75,23 +75,25 @@ pa_simple *s;
 pa_sample_spec xss;
 
 void led(void) {
-        struct gpiod_chip *output_chip;
-        struct gpiod_line *output_line;
+    struct gpiod_chip *output_chip;
+    struct gpiod_line *output_line19;
+    struct gpiod_line *output_line21;
 
 
-        /* open chip and get line */
-        output_chip = gpiod_chip_open_by_number(GPIOCHIP);
-        output_line = gpiod_chip_get_line(output_chip, GPIOLINE);
+    /* open chip and get line */
+    output_chip = gpiod_chip_open_by_number(3);
+    output_line19 = gpiod_chip_get_line(output_chip, 19);
+    output_line21 = gpiod_chip_get_line(output_chip, 21);
 
-        /* config as output and set a description */
-        gpiod_line_request_output(output_line, "blink",GPIOD_LINE_ACTIVE_STATE_HIGH);
+    /* config as output and set a description */
+    gpiod_line_request_output(output_line19, "bp",
+            GPIOD_LINE_ACTIVE_STATE_HIGH);
+    gpiod_line_request_output(output_line21, "rf",
+            GPIOD_LINE_ACTIVE_STATE_HIGH);
 
-        printf("flash led\n");
-        gpiod_line_set_value(output_line, 1);
-        sleep(1);
-        gpiod_line_set_value(output_line, 0);
-        //return;
-      }
+    gpiod_line_set_value(output_line19, 0); //turn on bp
+    gpiod_line_set_value(output_line21, 1); //turn off rf
+}
 
 //***************************************************************************
 unsigned long readc2file(char *ptr_to_infile, double *idat, double *qdat,
@@ -662,6 +664,7 @@ int main(int argc, char *argv[])
     //
     char *ptr_to_infile = NULL;
     bool success;
+    led();
     //
 
     char *data_dir=NULL;
