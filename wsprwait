@@ -22,7 +22,7 @@ j=0
 
 decode () {
 	#paplay /home/debian/final/data/iq-16b.wav&
-	i=i+1
+	((i++))
 
 	if ((j == 0)); then
 		echo "BP enabled"
@@ -43,11 +43,11 @@ decode () {
 	#/home/debian/final/wsprcan/./k9an-wsprd >> /home/debian/final/wsproutput.log
 
 	if ((i == 5)); then
-		i=0
+		((i=0))
 		if ((j == 0)); then
-			j=1
+			((j=1))
 		elif ((j == 1)); then
-			j=0
+			((j=0))
 		fi
 	fi
 }
