@@ -31,7 +31,6 @@ decode () {
 		/home/debian/final/wsprcan/./k9an-wsprd >> /home/debian/final/RFoutput.log
 		
 	elif ((j == 1)); then
-		/home/debian/final/gpio/./BPon
 		echo "RF enabled"
 		date
 		date >> /home/debian/final/BPoutput.log
