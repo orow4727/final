@@ -20,34 +20,29 @@ echo "configuring i2c"
 i=0
 j=0
 
+echo 46 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio46/direction 
+echo 0 > /sys/class/gpio/gpio46/value               
+
+echo 47 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio47/direction 
+echo 1 > /sys/class/gpio/gpio47/value  
+
 decode () {
 	#paplay /home/debian/final/data/iq-16b.wav&
-	((i++))
+	i +=1
 
 	if ((j == 0)); then
-		echo "BP enabled"
-		date
-		date >> /home/debian/final/RFoutput.log
-		/home/debian/final/wsprcan/./k9an-wsprd >> /home/debian/final/RFoutput.log
-		
+		echo 0 > /sys/class/gpio/gpio46/value
+		echo 1 > /sys/class/gpio/gpio47/value
+		echo "RF enabled" >> /home/debian/final/wsproutput.log
+		date >> /home/debian/final/wsproutput.log
+
 	elif ((j == 1)); then
-		echo "RF enabled"
-		date
-		date >> /home/debian/final/BPoutput.log
-		/home/debian/final2/wsprcan/./k9an-wsprd >> /home/debian/final/BPoutput.log
-		
-	fi
-
-	#date
-	#/home/debian/final/wsprcan/./k9an-wsprd >> /home/debian/final/wsproutput.log
-
-	if ((i == 5)); then
-		((i=0))
-		if ((j == 0)); then
-			((j=1))
-		elif ((j == 1)); then
-			((j=0))
-		fi
+		echo 1 > /sys/class/gpio/gpio46/value
+		echo 0 > /sys/class/gpio/gpio47/value
+		echo "Bandpass enabled" >> /home/debian/final/wsproutput.log
+		date >> /home/debian/final/wsproutput.log
 	fi
 }
 
