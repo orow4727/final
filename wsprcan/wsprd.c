@@ -93,6 +93,7 @@ void led(void) {
 
     gpiod_line_set_value(output_line19, 1); //turn off rf
     gpiod_line_set_value(output_line21, 0); //turn on bp
+    printf("ran led func\n");
 }
 
 //***************************************************************************
