@@ -1,0 +1,38 @@
+#!/bin/bash
+#
+
+set AUDIODEV=hw:1
+
+DECODER=wsprcan/k9an-wsprd
+TMPOUT='_wsprd.out'
+
+pax11publish -d
+pax11publish -r
+##
+pactl unload-module module-loopback
+aplay -l
+echo "enabling loopback"
+pactl load-module module-loopback source=alsa_input.usb-Plugable_Plugable_USB_Audio_Device_000000000000-00.analog-stereo
+
+echo "configuring i2c"
+/home/debian/final/i2c/./si5351
+
+decode () {
+	date
+	date >> /home/debian/final/RFoutput.log
+	/home/debian/final/wsprcan/./k9an-wsprd >> /home/debian/final/RFoutput.log
+
+}
+
+while true
+do
+	sec=$(date +'%S')
+	min=$(date +'%M')
+	#date
+	if (("10#$min" % 2 == 0 && "10#$sec" == 0 )); then
+		echo -n "Executing wspr_decode "
+		decode
+	#elif ((10#$sec < 40)); then
+	#	sleep 1
+	fi
+done
