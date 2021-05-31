@@ -22,12 +22,12 @@ decode () {
 	if ((i == 0)); then
 		echo 0 > /sys/class/gpio/gpio115/value
 		date >> /home/debian/final/wsproutput.log
-		echo "RF enabled" >> /home/debian/final/wsproutput.log
+		echo "BP enabled" >> /home/debian/final/wsproutput.log
 
 	elif ((j == 1)); then
 		echo 1 > /sys/class/gpio/gpio115/value
 		date >> /home/debian/final/wsproutput.log
-		echo "Bandpass enabled" >> /home/debian/final/wsproutput.log
+		echo "RF enabled" >> /home/debian/final/wsproutput.log
 		
 	fi
 }
