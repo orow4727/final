@@ -20,7 +20,7 @@ echo "configuring i2c"
 
 
 decode () {
-	/home/debian/final/wsprcan/./k9an-wsprd >> /home/debian/final/RFoutput.log
+	/home/debian/final/wsprcan/./k9an-wsprd
 
 }
 
