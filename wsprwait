@@ -20,9 +20,8 @@ echo "configuring i2c"
 i=0
 j=0
 
-decode () {
+decode() {
 	#paplay /home/debian/final/data/iq-16b.wav&
-	((i++))
 
 	if ((i == 0)); then
 		echo "BP enabled"
@@ -35,9 +34,9 @@ decode () {
 		date
 		date >> /home/debian/final/BPoutput.log
 		/home/debian/final2/wsprcan/./k9an-wsprd >> /home/debian/final/BPoutput.log
+	fi
 }
 
-decode2(){}
 
 while true
 do
