@@ -46,8 +46,11 @@ do
 		echo "10mins?"
 		date
 		((i=!i))
+	fi
+	
 	if (("10#$min" % 2 == 0 && "10#$sec" == 0 )); then
 		echo -n "Executing wspr_decode "
 			decode
 	fi
+
 done
