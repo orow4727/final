@@ -18,19 +18,19 @@ pactl load-module module-loopback source=alsa_input.platform-4010000000.pcie-pci
 i=0
 
 decode() {
-	#paplay /home/debian/final/data/iq-16b.wav&
+	#paplay /home/elec3607/final/data/iq-16b.wav&
 
 	if ((i == 0)); then
 		echo "BP enabled"
 		date
-		date >> /home/debian/final/RFoutput.log
-		/home/elec3607/final/wsprcan/./k9an-wsprd >> /home/debian/final/RFoutput.log
+		date >> /home/elec3607/final/RFoutput.log
+		/home/elec3607/final/wsprcan/./k9an-wsprd >> /home/elec3607/final/RFoutput.log
 
 	elif ((i == 1)); then
 		echo "RF enabled"
 		date
-		date >> /home/debian/final/BPoutput.log
-		/home/elec3607/final2/wsprcan/./k9an-wsprd >> /home/debian/final/BPoutput.log
+		date >> /home/elec3607/final/BPoutput.log
+		/home/elec3607/final2/wsprcan/./k9an-wsprd >> /home/elec3607/final/BPoutput.log
 	fi
 }
 
