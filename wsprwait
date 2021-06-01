@@ -32,7 +32,7 @@ decode() {
 		date >> /home/elec3607/final/BPoutput.log
 		/home/elec3607/final/wsprcan/./k9an-wsprd >> /home/elec3607/final/BPoutput.log
 	fi
-}
+} 
 
 
 while true
