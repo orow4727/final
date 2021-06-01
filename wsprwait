@@ -24,15 +24,15 @@ decode() {
 		echo "BP enabled"
 		date
 		date >> /home/elec3607/final/RFoutput.log
-		/home/elec3607/final/wsprcan/./k9an-wsprd >> /home/elec3607/final/RFoutput.log
+		/home/elec3607/final/wsprcan/./k9an-wsprd >> /home/elec3607/final/BPoutput.log
 
 	elif ((i == 1)); then
 		echo "RF enabled"
 		date
 		date >> /home/elec3607/final/BPoutput.log
-		/home/elec3607/final/wsprcan/./k9an-wsprd >> /home/elec3607/final/BPoutput.log
+		/home/elec3607/final/wsprcan/./k9an-wsprd >> /home/elec3607/final/RFoutput.log
 	fi
-} 
+}
 
 
 while true
