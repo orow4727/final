@@ -12,23 +12,24 @@ i=0
 
 
 echo 115 > /sys/class/gpio/export
-echo out > /sys/class/gpio/gpio115/direction 
-echo 0 > /sys/class/gpio/gpio115/value               
+echo out > /sys/class/gpio/gpio115/direction
+echo 0 > /sys/class/gpio/gpio115/value
 
 decode () {
 	#paplay /home/debian/final/data/iq-16b.wav&
-	i +=1
 
 	if ((i == 0)); then
 		echo 0 > /sys/class/gpio/gpio115/value
-		date >> /home/debian/final/wsproutput.log
-		echo "BP enabled" >> /home/debian/final/wsproutput.log
+		date >> /home/debian/final/relaystatus.log
+		echo "BP enabled" >> /home/debian/final/relaystatus.log
+		echo "done"
 
-	elif ((j == 1)); then
+	elif ((i == 1)); then
 		echo 1 > /sys/class/gpio/gpio115/value
-		date >> /home/debian/final/wsproutput.log
-		echo "RF enabled" >> /home/debian/final/wsproutput.log
-		
+		date >> /home/debian/final/relaystatus.log
+		echo "RF enabled" >> /home/debian/final/relaystatus.log
+		echo "done"
+
 	fi
 }
 
@@ -37,7 +38,7 @@ do
 	sec=$(date +'%S')
 	min=$(date +'%M')
 	#date
-	if (("10#$min" % 2 == 0 && "10#$sec" == 0 )); then
+	if (("10#$min" % 10 == 0 && "10#$sec" == 0 )); then
 		echo -n "flipping relay "
 		((i = !i))
 		decode
