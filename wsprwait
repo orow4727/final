@@ -25,12 +25,13 @@ decode() {
 		date
 		date >> /home/elec3607/final/RFoutput.log
 		/home/elec3607/final/wsprcan/./k9an-wsprd >> /home/elec3607/final/BPoutput.log
-
+		echo "done"
 	elif ((i == 1)); then
 		echo "RF enabled"
 		date
 		date >> /home/elec3607/final/BPoutput.log
 		/home/elec3607/final/wsprcan/./k9an-wsprd >> /home/elec3607/final/RFoutput.log
+		echo "done"
 	fi
 }
 
@@ -47,7 +48,7 @@ do
 
 	if (("10#$min" % 2 == 0 && "10#$sec" == 0 )); then
 		echo -n "Executing wspr_decode "
-			decode
+		decode
 	fi
 
 done
