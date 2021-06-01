@@ -30,7 +30,7 @@ decode() {
 		echo "RF enabled"
 		date
 		date >> /home/elec3607/final/BPoutput.log
-		/home/elec3607/final2/wsprcan/./k9an-wsprd >> /home/elec3607/final/BPoutput.log
+		/home/elec3607/final/wsprcan/./k9an-wsprd >> /home/elec3607/final/BPoutput.log
 	fi
 }
 
