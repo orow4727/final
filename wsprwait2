@@ -29,8 +29,8 @@ decode () {
 		date >> /home/debian/final/relaystatus.log
 		echo "RF enabled" >> /home/debian/final/relaystatus.log
 		echo "done"
-
 	fi
+	sleep 5
 }
 
 while true
