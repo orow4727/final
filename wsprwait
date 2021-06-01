@@ -18,21 +18,25 @@ pactl load-module module-loopback source=alsa_input.platform-4010000000.pcie-pci
 i=0
 
 decode() {
-	#paplay /home/elec3607/final/data/iq-16b.wav&
+	date
+	date >> /home/elec3607/final/Alloutput.log
+	/home/elec3607/final/wsprcan/./k9an-wsprd >> /home/elec3607/final/Alloutput.log
+	echo "done"
 
-	if ((i == 0)); then
-		echo "BP enabled"
-		date
-		date >> /home/elec3607/final/RFoutput.log
-		/home/elec3607/final/wsprcan/./k9an-wsprd >> /home/elec3607/final/BPoutput.log
-		echo "done"
-	elif ((i == 1)); then
-		echo "RF enabled"
-		date
-		date >> /home/elec3607/final/BPoutput.log
-		/home/elec3607/final/wsprcan/./k9an-wsprd >> /home/elec3607/final/RFoutput.log
-		echo "done"
-	fi
+	#if ((i == 0)); then
+	#	echo "BP enabled"
+	#	date
+	#	date >> /home/elec3607/final/RFoutput.log
+	#	/home/elec3607/final/wsprcan/./k9an-wsprd >> /home/elec3607/final/BPoutput.log
+	#	echo "done"
+	#elif ((i == 1)); then
+	#	echo "RF enabled"
+	#	date
+	#	date >> /home/elec3607/final/BPoutput.log
+	#	/home/elec3607/final/wsprcan/./k9an-wsprd >> /home/elec3607/final/RFoutput.log
+	#	echo "done"
+	#fi
+
 }
 
 
@@ -40,11 +44,11 @@ while true
 do
 	sec=$(date +'%S')
 	min=$(date +'%M')
-	if (("10#$min" % 10 == 0 && "10#$sec" == 0 )); then
-		echo "10mins?"
-		date
-		((i=!i))
-	fi
+	#if (("10#$min" % 9 == 0 && "10#$sec" == 50 )); then
+	#	echo "10mins?"
+	#	date
+	#	((i=!i))
+	#fi
 
 	if (("10#$min" % 2 == 0 && "10#$sec" == 0 )); then
 		echo -n "Executing wspr_decode "
