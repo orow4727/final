@@ -21,7 +21,7 @@ decode() {
 	date
 	date >> /home/elec3607/final/Alloutput.log
 	/home/elec3607/final/wsprcan/./k9an-wsprd >> /home/elec3607/final/Alloutput.log
-	echo "done"
+	tail -3 /home/elec3607/final/Alloutput.log
 
 	#if ((i == 0)); then
 	#	echo "BP enabled"
